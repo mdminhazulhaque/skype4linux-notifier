@@ -3,12 +3,16 @@
 import cv2
 import numpy as np
 import time
+import datetime
 
 try:
     from PIL import ImageGrab
 except:
     import pyscreenshot as ImageGrab
-    
+
+def now():
+    return datetime.datetime.today().strftime('%d/%m/%Y %I:%M:%S %p')
+
 class Skype():
     def __init__(self, icon):
         self.skype = cv2.imread(icon)
@@ -46,8 +50,6 @@ if __name__ == "__main__":
     
     while True:
         if s.is_unseen():
-            print "New message!"
-        else:
-            print "Meh! Nothing to do."
+            print(now() + " New message from Skype!")
             
         time.sleep(0.5)
